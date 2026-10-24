@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="在全国食材地图中探索地区价格、月份时令与趋势如何影响菜谱推荐，再结合口味、营养与健康偏好调整结果。当前为合成数据研究演示。">
+  <meta name="description" content="基于可追溯的公开批发报价与菜谱平台榜单，按日和近7天查看食材价格、菜谱热度与食材出现频率，并体验透明的推荐模拟。">
   <meta name="theme-color" content="#244c3d">
   <title>Recipe Lab · 菜谱推荐交互研究</title>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./market.css">
+  <link rel="stylesheet" href="./live-data.css">
 </head>
 <body>
-  <a class="skip-link" href="#food-map">跳到全国食材地图</a>
+  <a class="skip-link" href="#live-data">跳到公开数据看板</a>
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="#top" aria-label="Recipe Lab 首页"><span class="brand-icon" aria-hidden="true">✳</span><span>Recipe Lab<small>菜谱推荐 · 交互研究</small></span></a>
-      <nav aria-label="主导航"><a href="#food-map">全国食材地图</a><a href="#experiment">偏好实验</a><a href="#research">论文与证据</a></nav>
-      <span class="version"><span class="status-dot"></span>研究演示 <b>0.2</b></span>
+      <nav aria-label="主导航"><a href="#live-data">数据看板</a><a href="#live-simulation">推荐模拟</a><a href="#data-sources">来源与口径</a></nav>
+      <span class="version"><span class="status-dot"></span>数据观察 <b>0.3</b></span>
     </div>
   </header>
 
@@ -24,22 +25,41 @@
       <div class="hero-copy">
         <p class="eyebrow">RECIPE LAB / A TASTE OF PLACE & SEASON</p>
         <h1>一方水土，一季食材。<br><em>找到这一餐的灵感。</em></h1>
-        <p class="hero-description">从全国地图出发，探索食材价格、时令与趋势，再结合你的口味、营养和健康偏好，看看推荐如何改变。</p>
-        <div class="hero-actions"><a class="button primary" href="#food-map">探索食材地图 <span aria-hidden="true">↘</span></a><a class="text-link" href="#experiment">调整我的偏好 <span aria-hidden="true">↗</span></a></div>
-        <div class="hero-caption"><span class="tiny-line"></span>34 个省级地区 · 12 个月份 · 可解释的推荐</div>
+        <p class="hero-description">从公开市场报价和菜谱榜单出发，看看各地食材价格、本期流行菜谱，以及每一次推荐的数据依据。</p>
+        <div class="hero-actions"><a class="button primary" href="#live-data">查看最新数据 <span aria-hidden="true">↘</span></a><a class="text-link" href="#live-simulation">体验推荐模拟 <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-caption"><span class="tiny-line"></span>原始日期可查 · 每条来源可追溯 · 按日持续更新</div>
       </div>
-      <aside class="hero-visual" aria-label="推荐结果实时预览">
-        <div class="visual-heading"><span>LIVE EXPLORATION</span><span class="soft-label">合成示例</span></div>
-        <div class="visual-content"><div class="specimen-number">01</div><p class="eyebrow">个人五维偏好预览</p><h2 id="hero-recipe">正在载入示例…</h2><p id="hero-subtitle" class="visual-subtitle">调整偏好，查看排序变化</p></div>
+      <aside class="hero-visual" aria-label="合成偏好推荐预览">
+        <div class="visual-heading"><span>PREFERENCE SIMULATION</span><span class="soft-label">合成示例</span></div>
+        <div class="visual-content"><div class="specimen-number">01</div><p class="eyebrow">五维偏好模拟预览</p><h2 id="hero-recipe">正在载入示例…</h2><p id="hero-subtitle" class="visual-subtitle">调整偏好，查看排序变化</p></div>
         <div id="hero-bars" class="hero-bars"></div>
         <div class="visual-footer"><span>五个维度，一次权衡</span><span aria-hidden="true">↙</span></div>
       </aside>
     </section>
 
-    <div class="wrap"><div class="prototype-note"><span class="note-mark" aria-hidden="true">i</span><p><strong>合成数据研究演示。</strong> 价格、时令标签、趋势热度与菜谱属性均为示例，未接入实时行情或论文模型。可用于体验推荐过程，不能作为真实市场、营养或健康结论。</p></div></div>
+    <div class="wrap"><div class="prototype-note"><span class="note-mark" aria-hidden="true">i</span><p><strong>公开来源，透明口径。</strong> 数据看板显示可追溯的真实公开记录，推荐区展示可解释的规则模拟。原始数据日期、本站抓取时间和网页检查时间分别标注；论文模型仍待接入。</p></div></div>
 
+    <section id="live-data" class="wrap live-section section-anchor" aria-labelledby="live-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / OPEN DATA OBSERVATORY</p><h2 id="live-title">食材与菜谱，跟着数据更新。</h2></div><a class="text-link" href="#data-sources">查看全部信息源 ↗</a></div>
+      <div class="feed-status-bar"><div class="feed-status-copy"><span id="feed-light" class="feed-light" aria-hidden="true"></span><div><strong id="feed-state" role="status" aria-live="polite">载入已发布数据…</strong><p id="feed-time">正在读取数据快照</p></div></div><button type="button" id="feed-refresh" class="button secondary"><span class="refresh-icon" aria-hidden="true">↻</span>检查最新快照</button></div>
+      <div id="feed-metrics" class="feed-metrics"></div>
+      <div class="live-board">
+        <form id="live-price-controls" class="live-toolbar" aria-label="公开价格筛选"><div><label for="live-food">食材</label><select id="live-food" aria-label="选择报价食材"></select></div><div><label for="live-province">地区</label><select id="live-province" aria-label="选择报价地区"></select></div><div><label for="live-period">观察周期</label><select id="live-period"><option value="day">最新发布日</option><option value="week">近 7 天观测</option></select></div><span id="live-price-date" class="live-date-badge"></span></form>
+        <div class="live-map-layout"><div class="live-map-side"><div class="live-map-top"><div><p class="eyebrow">WHOLESALE / OBSERVED MARKETS</p><h3 id="live-map-title">全国食材价格地图</h3></div><span class="observed-badge">真实公开报价</span></div><div id="live-map-svg" class="atlas-svg live-map-svg"></div><div class="live-map-bottom"><div><span id="live-price-unit">元/kg · 省内样本市场中位数</span><div class="atlas-scale"><span id="live-min"></span><span class="live-price-gradient"></span><span id="live-max"></span><span class="missing-key">无数据</span></div></div><p id="live-map-hover"></p></div><p class="live-small-note">省级颜色由所采市场报价计算，不是官方省均价。灰色地区缺少本期可比报价；不会用全国值或示例值补齐。</p></div>
+        <aside class="live-price-side"><p class="eyebrow">LOCAL PRICE EVIDENCE</p><div class="live-price-heading"><h3 id="live-place-name">浙江</h3><span id="live-price-food"></span></div><div class="live-price-number"><strong id="live-local-value">—</strong><span>元/kg</span></div><p id="live-local-caption" class="live-local-caption"></p><div id="live-price-statline" class="live-price-statline"></div><div id="live-price-trend" class="live-price-trend"></div><div class="live-quotes-heading"><h4>原始市场报价</h4><span id="live-quote-count"></span></div><div id="live-quote-list"></div><details class="live-quote-details"><summary>查看全部市场及原始变化率</summary><div class="live-table-scroll"><table class="live-quotes-table"><thead><tr><th scope="col">市场</th><th scope="col">当日</th><th scope="col">前一期</th><th scope="col">本站计算</th><th scope="col">源表原值</th></tr></thead><tbody id="live-all-quotes"></tbody></table></div></details><p id="live-price-attribution" class="live-small-note"></p></aside></div>
+      </div>
+      <div class="popularity-heading"><div><p class="eyebrow">RECIPE & INGREDIENT SIGNALS</p><h3>本期大家在做什么？</h3></div><label for="live-ranking-source">榜单来源<select id="live-ranking-source" aria-label="选择菜谱榜单来源"></select></label></div>
+      <div class="popularity-grid"><section class="ingredient-signal-panel" aria-labelledby="ingredient-signal-title"><div class="signal-heading"><h4 id="ingredient-signal-title">榜单里的食材关注度</h4><span class="derived-badge">本站派生</span></div><p id="ingredient-signal-caption" class="live-small-note"></p><div id="ingredient-signal-bars"></div><p class="live-small-note">每道菜对同一食材最多计一次。这个比例只描述所采榜单首页，不代表全国搜索量、销量或地域热度。</p></section><section class="recipe-signal-panel" aria-labelledby="recipe-signal-title"><div class="signal-heading"><h4 id="recipe-signal-title">菜谱榜单</h4><a id="recipe-ranking-origin" class="text-link" target="_blank" rel="noopener noreferrer">来源原页 ↗</a></div><p id="recipe-signal-caption" class="live-small-note"></p><div id="recipe-ranking-list"></div><details class="ranking-more"><summary>展开完整榜单快照</summary><div id="recipe-ranking-more"></div></details></section></div>
+      <div class="collection-trace"><div><h4>更新记录</h4><p>每日 08:25、17:25（北京时间）检查来源；网页每 5 分钟检查已发布快照。调度可能延迟，手动检查不会触发源站抓取。</p></div><ol id="feed-events" aria-live="polite"></ol></div>
+    </section>
+
+    <section id="live-simulation" class="live-simulation-section section-anchor"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">02 / EXPLAINABLE SIMULATION</p><h2>用这期数据，模拟一次推荐。</h2></div><span class="simulation-badge">规则模拟 · 非论文模型</span></div><p class="live-sim-intro">从当前平台榜单挑选菜谱，结合你关注的食材和所选地区的报价，查看推荐怎样变化。价格只用于比较已匹配食材的本地价位优势，不估算未知用量的菜谱总价。</p><div class="live-sim-controls"><div class="live-sim-field"><label for="sim-ingredient">这一餐想吃什么？</label><select id="sim-ingredient"><option value="">不限食材</option></select></div><div class="live-sim-field"><label for="sim-strategy">推荐侧重点</label><select id="sim-strategy"><option value="balanced">综合观察</option><option value="popular">榜单优先</option><option value="ingredient">食材偏好优先</option><option value="local-price">本地价格机会</option></select></div><div class="live-sim-buttons"><button type="button" class="button primary" id="sim-run">运行推荐模拟 <span aria-hidden="true">→</span></button><button type="button" class="button secondary" id="sim-autoplay" aria-pressed="false">自动演示</button></div></div><div class="simulation-progress" id="sim-progress" aria-label="推荐计算过程"><span data-stage="0">读取本期榜单</span><i></i><span data-stage="1">匹配食材与报价</span><i></i><span data-stage="2">按偏好计算</span><i></i><span data-stage="3">生成推荐</span></div><p id="sim-status" class="sim-status" aria-live="polite">设置偏好后运行模拟；使用真实快照，排序规则为演示。</p><div id="sim-cards" class="sim-cards"></div><details class="live-sim-method"><summary>查看模拟公式、缺失处理与匹配规则</summary><div id="sim-method-content"></div></details></div></section>
+
+    <section id="data-sources" class="wrap data-sources-section section-anchor"><div class="section-heading"><div><p class="eyebrow">03 / SOURCES & ACCOUNTABILITY</p><h2>每一个数字，都能找到来处。</h2></div><span id="source-connection-summary" class="observed-badge"></span></div><p class="source-intro">来源名称不等于已经接入。下方逐项列出当前状态、指标含义、覆盖范围、更新周期和原始入口。资料归属各原发布机构，来源机构未为本网站或推荐规则提供认证。</p><div id="source-filter" class="source-filters" role="group" aria-label="信息源筛选"><button type="button" data-source-filter="all" aria-pressed="true">全部来源</button><button type="button" data-source-filter="connected" aria-pressed="false">已接入</button><button type="button" data-source-filter="reference" aria-pressed="false">参考与待接入</button></div><div id="source-catalog" class="source-catalog"></div><div class="source-method-grid"><article><span>01</span><h3>时间分开记录</h3><p>原始报价日期代表市场数据时点；抓取时间代表本站读取来源的时点；检查时间只代表网页读取已发布快照。三者不能互相替代。</p></article><article><span>02</span><h3>比较使用同一口径</h3><p>价格保留食材规格、单位、批发市场和来源。同省日价取当日样本市场中位数，近 7 天取已观测日中位数的均值，显示实际样本天数。</p></article><article><span>03</span><h3>缺失与失败可见</h3><p>抓取失败时保留最近一次成功记录并标记缓存状态。无报价不估填，无历史不插值；“本周”起讫未公布时不编造日期。</p></article></div><div class="source-downloads"><a href="./data/latest.json" target="_blank" rel="noopener noreferrer">下载当前数据快照 ↗</a><a href="./data/history.json" target="_blank" rel="noopener noreferrer">查看累计历史 ↗</a><a href="https://github.com/yuguitao/recipe-paper-demo/actions" target="_blank" rel="noopener noreferrer">查看更新任务 ↗</a><a href="#research">论文与证据说明 ↗</a></div></section>
+
+    <details class="legacy-lab" id="synthetic-lab"><summary class="wrap">展开五维偏好与月份情境实验 <span>合成数据 · 独立实验区</span></summary>
     <section id="food-map" class="wrap atlas-section section-anchor" aria-labelledby="atlas-title">
-      <div class="section-heading"><div><p class="eyebrow">01 / FOOD ATLAS</p><h2 id="atlas-title">把全国的风味，放进一张地图。</h2></div><p class="section-subtitle">点击地区，探索这个月份的食材与菜谱。</p></div>
+      <div class="section-heading"><div><p class="eyebrow">DEMO / SYNTHETIC FOOD ATLAS</p><h2 id="atlas-title">把全国的风味，放进一张地图。</h2></div><p class="section-subtitle">点击地区，探索这个月份的食材与菜谱。</p></div>
       <div class="atlas-shell">
         <form id="atlas-controls" class="atlas-toolbar" aria-label="地区与月份">
           <div class="atlas-location"><label for="atlas-province">购买地</label><select id="atlas-province" name="province" aria-label="选择省级地区"></select></div>
@@ -74,7 +94,7 @@
     </section>
 
     <section id="experiment" class="wrap experiment section-anchor">
-      <div class="section-heading"><div><p class="eyebrow">02 / PERSONAL PREFERENCES</p><h2>这一次，你更看重什么？</h2></div><p class="section-subtitle">这里的偏好和食材排除，也会应用到地图推荐。</p></div>
+      <div class="section-heading"><div><p class="eyebrow">DEMO / PERSONAL PREFERENCES</p><h2>这一次，你更看重什么？</h2></div><p class="section-subtitle">这里的偏好和食材排除，也会应用到地图推荐。</p></div>
       <div class="preset-bar"><span class="preset-label">从一个场景开始</span><div id="presets" class="presets" aria-label="偏好场景"></div></div>
 
       <div class="lab-layout">
@@ -103,13 +123,15 @@
       </div>
     </section>
 
-    <section id="method" class="method-section section-anchor"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">03 / UNDERSTAND</p><h2>让推荐的每一步，都可以解释。</h2></div><span class="soft-label">当前逻辑：示例规则</span></div><div class="method-grid"><article><span class="step-number">01</span><h3>偏好进入模型</h3><p>用情境选项和重要性滑杆，表达“喜欢什么”与“更重视什么”。真实网站应使用论文实际支持的输入。</p></article><article><span class="step-number">02</span><h3>先检查硬约束</h3><p>按勾选的示例食材标签排除候选。没有符合条件的结果时，明确显示空集，不自动放宽限制。</p></article><article><span class="step-number">03</span><h3>观察排序与贡献</h3><p>归一化权重后，对五个示例属性分加权。结果区展示每一项的实际贡献，支持同条件下的规则对照。</p></article></div><details class="formula-details"><summary>展开：当前示例怎么算分？</summary><div class="formula-content"><p class="formula">S(r) = Σ<sub>j</sub> w̃<sub>j</sub> · s<sub>j</sub>(r)</p><p>每个维度示例分 s 为 0–100；w̃ 为所选重要性除以重要性总和。所有权重为 0 时不返回排序。营养、烹饪偏好、地域和时令属性均为人工构造的演示数据。</p><p>“不指定”地域或时令使用相同的中性示例分，不区分候选；因此会占用部分权重并影响分数尺度。接入论文时，应替换为论文对缺失偏好的实际处理方式。</p><p><strong>加权分解仅适用于当前示例。</strong> 如果论文采用图模型、深度模型或其他方法，应显示对应的真实模型解释，不能把这条公式当作论文方法。</p></div></details></div></section>
+    </details>
 
-    <section id="research" class="wrap research-section section-anchor"><div class="section-heading"><div><p class="eyebrow">04 / EVIDENCE</p><h2>交互帮助理解，实验提供依据。</h2></div><p class="section-subtitle">把网页上的变化，连接到论文中的证据。</p></div><div class="research-layout"><div class="research-intro"><span class="outline-label">论文待接入</span><h3>从概念原型，<br>走向论文配套网站。</h3><p>这部分会依据论文原文补充研究问题、核心方法、实验设置和结论。当前未填写论文标题、作者、图表、DOI 或性能指标。</p><p class="research-footnote">正式版本可加入 Paper、Code、Data、BibTeX 入口及真实模型版本。</p></div><div class="evidence-rows"><article><span class="evidence-index">A</span><div><h4>研究问题与核心方法</h4><p>论文摘要、贡献点、方法图及与网页输入输出的对应关系。</p></div><span class="pending">待正文</span></article><article><span class="evidence-index">B</span><div><h4>真实对照与评价结果</h4><p>数据集划分、基线、评价口径及原始实验结果；不使用合成指标。</p></div><span class="pending">待实验</span></article><article><span class="evidence-index">C</span><div><h4>典型案例与适用边界</h4><p>成功与失败案例、冲突约束、候选范围及结果适用条件。</p></div><span class="pending">待核验</span></article><article><span class="evidence-index">D</span><div><h4>代码与复现信息</h4><p>真实推理接口、模型和数据版本、随机种子、固定测试输入。</p></div><span class="pending">待代码</span></article></div></div></section>
+    <section id="method" class="method-section section-anchor"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">04 / UNDERSTAND</p><h2>让推荐的每一步，都可以解释。</h2></div><span class="soft-label">当前逻辑：示例规则</span></div><div class="method-grid"><article><span class="step-number">01</span><h3>偏好进入模型</h3><p>用情境选项和重要性滑杆，表达“喜欢什么”与“更重视什么”。真实网站应使用论文实际支持的输入。</p></article><article><span class="step-number">02</span><h3>先检查硬约束</h3><p>按勾选的示例食材标签排除候选。没有符合条件的结果时，明确显示空集，不自动放宽限制。</p></article><article><span class="step-number">03</span><h3>观察排序与贡献</h3><p>归一化权重后，对五个示例属性分加权。结果区展示每一项的实际贡献，支持同条件下的规则对照。</p></article></div><details class="formula-details"><summary>展开：当前示例怎么算分？</summary><div class="formula-content"><p class="formula">S(r) = Σ<sub>j</sub> w̃<sub>j</sub> · s<sub>j</sub>(r)</p><p>每个维度示例分 s 为 0–100；w̃ 为所选重要性除以重要性总和。所有权重为 0 时不返回排序。营养、烹饪偏好、地域和时令属性均为人工构造的演示数据。</p><p>“不指定”地域或时令使用相同的中性示例分，不区分候选；因此会占用部分权重并影响分数尺度。接入论文时，应替换为论文对缺失偏好的实际处理方式。</p><p><strong>加权分解仅适用于当前示例。</strong> 如果论文采用图模型、深度模型或其他方法，应显示对应的真实模型解释，不能把这条公式当作论文方法。</p></div></details></div></section>
+
+    <section id="research" class="wrap research-section section-anchor"><div class="section-heading"><div><p class="eyebrow">05 / EVIDENCE</p><h2>交互帮助理解，实验提供依据。</h2></div><p class="section-subtitle">把网页上的变化，连接到论文中的证据。</p></div><div class="research-layout"><div class="research-intro"><span class="outline-label">论文待接入</span><h3>从概念原型，<br>走向论文配套网站。</h3><p>这部分会依据论文原文补充研究问题、核心方法、实验设置和结论。当前未填写论文标题、作者、图表、DOI 或性能指标。</p><p class="research-footnote">正式版本可加入 Paper、Code、Data、BibTeX 入口及真实模型版本。</p></div><div class="evidence-rows"><article><span class="evidence-index">A</span><div><h4>研究问题与核心方法</h4><p>论文摘要、贡献点、方法图及与网页输入输出的对应关系。</p></div><span class="pending">待正文</span></article><article><span class="evidence-index">B</span><div><h4>真实对照与评价结果</h4><p>数据集划分、基线、评价口径及原始实验结果；不使用合成指标。</p></div><span class="pending">待实验</span></article><article><span class="evidence-index">C</span><div><h4>典型案例与适用边界</h4><p>成功与失败案例、冲突约束、候选范围及结果适用条件。</p></div><span class="pending">待核验</span></article><article><span class="evidence-index">D</span><div><h4>代码与复现信息</h4><p>真实推理接口、模型和数据版本、随机种子、固定测试输入。</p></div><span class="pending">待代码</span></article></div></div></section>
 
     <section class="wrap handoff-section"><div><p class="eyebrow">NEXT / CONNECT THE PAPER</p><h2>下一步，让你的研究真正运行起来。</h2><p>提供论文 PDF 或正文，以及现有算法代码和一小份可公开样例数据，即可按真实方法接入交互。</p></div><a class="button primary" href="#experiment">再试一个场景 <span aria-hidden="true">↗</span></a></section>
   </main>
-  <footer class="wrap site-footer"><p>Recipe Lab <span>·</span> 论文交互概念原型</p><p>本页输入在浏览器内计算，无账户、无远程推理、无分析追踪。</p></footer>
+  <footer class="wrap site-footer"><p>Recipe Lab <span>·</span> 论文交互概念原型</p><p>公开来源按计划更新；偏好与模拟在浏览器内计算，无账户或分析追踪。</p></footer>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <noscript><div class="noscript">需要启用 JavaScript 才能体验交互推荐。论文接入说明仍可阅读。</div></noscript>
   <script src="./demo-engine.js"></script>
@@ -117,5 +139,8 @@
   <script src="./market-engine.js"></script>
   <script src="./app.js"></script>
   <script src="./market-ui.js"></script>
+  <script src="./data/latest.js"></script>
+  <script src="./live-model.js"></script>
+  <script src="./live-data.js"></script>
 </body>
 </html>
