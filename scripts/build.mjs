@@ -5,9 +5,9 @@ import { fileURLToPath } from 'node:url';
 const projectDirectory = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const distDirectory = resolve(projectDirectory, 'dist');
 const deliverablesDirectory = resolve(projectDirectory, '..', 'deliverables');
-const styleFiles = ['styles.css', 'market.css'];
-const scriptFiles = ['demo-engine.js', 'map-data.js', 'market-engine.js', 'app.js', 'market-ui.js'];
-const sourceFiles = ['index.html', ...styleFiles, ...scriptFiles, '.nojekyll', 'MAP-SOURCE.md'];
+const styleFiles = ['styles.css', 'market.css', 'live-data.css'];
+const scriptFiles = ['demo-engine.js', 'map-data.js', 'market-engine.js', 'app.js', 'market-ui.js', 'data/latest.js', 'live-model.js', 'live-data.js'];
+const sourceFiles = ['index.html', ...styleFiles, ...scriptFiles, '.nojekyll', 'MAP-SOURCE.md', 'DATA-SOURCES.md', 'price-source-audit.md', 'popularity-source-audit.md', 'data/latest.json', 'data/history.json'];
 const sources = Object.fromEntries(await Promise.all(
   ['index.html', ...styleFiles, ...scriptFiles].map(async (filename) => [
     filename, await readFile(resolve(projectDirectory, filename), 'utf8'),
@@ -45,9 +45,11 @@ for (const filename of scriptFiles) {
 await mkdir(distDirectory, { recursive: true });
 await mkdir(deliverablesDirectory, { recursive: true });
 await Promise.all(
-  sourceFiles.map((filename) =>
-    copyFile(resolve(projectDirectory, filename), resolve(distDirectory, filename)),
-  ),
+  sourceFiles.map(async (filename) => {
+    const destination = resolve(distDirectory, filename);
+    await mkdir(dirname(destination), { recursive: true });
+    await copyFile(resolve(projectDirectory, filename), destination);
+  }),
 );
 const standalonePath = resolve(deliverablesDirectory, 'recipe-recommender-prototype.html');
 await writeFile(standalonePath, standaloneHtml, 'utf8');
