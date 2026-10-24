@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="菜谱推荐论文的交互概念原型：探索口味、营养、健康、地域与时令偏好如何影响推荐。当前使用合成示例数据，尚未接入论文算法。">
+  <meta name="theme-color" content="#244c3d">
+  <title>Recipe Lab · 菜谱推荐交互研究</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#experiment">跳到交互实验</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Recipe Lab 首页"><span class="brand-icon" aria-hidden="true">✳</span><span>Recipe Lab<small>菜谱推荐 · 交互研究</small></span></a>
+      <nav aria-label="主导航"><a href="#experiment">交互体验</a><a href="#method">推荐逻辑</a><a href="#research">论文与证据</a></nav>
+      <span class="version"><span class="status-dot"></span>概念原型 <b>0.1</b></span>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">RECIPE RECOMMENDATION / INTERACTIVE RESEARCH</p>
+        <h1>把推荐过程，<br><em>变成可探索的体验。</em></h1>
+        <p class="hero-description">一道菜为什么适合你？在口味、营养、健康、地域与时令之间，观察每一次偏好调整如何改变推荐。</p>
+        <div class="hero-actions"><a class="button primary" href="#experiment">开始交互 <span aria-hidden="true">↘</span></a><a class="text-link" href="#research">查看论文接入方案 <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-caption"><span class="tiny-line"></span>从阅读方法，到理解一次推荐。</div>
+      </div>
+      <aside class="hero-visual" aria-label="推荐结果实时预览">
+        <div class="visual-heading"><span>LIVE EXPLORATION</span><span class="soft-label">合成示例</span></div>
+        <div class="visual-content"><div class="specimen-number">01</div><p class="eyebrow">当前首位推荐</p><h2 id="hero-recipe">正在载入示例…</h2><p id="hero-subtitle" class="visual-subtitle">调整偏好，查看排序变化</p></div>
+        <div id="hero-bars" class="hero-bars"></div>
+        <div class="visual-footer"><span>五个维度，一次权衡</span><span aria-hidden="true">↙</span></div>
+      </aside>
+    </section>
+
+    <div class="wrap"><div class="prototype-note"><span class="note-mark" aria-hidden="true">i</span><p><strong>这是交互概念原型。</strong> 使用合成菜谱属性与示例加权规则，尚未接入论文。分数仅用于演示排序，不代表实际营养值、健康评价或适合概率。</p></div></div>
+
+    <section id="experiment" class="wrap experiment section-anchor">
+      <div class="section-heading"><div><p class="eyebrow">01 / EXPLORE</p><h2>这一次，你更看重什么？</h2></div><p class="section-subtitle">调整输入，推荐与解释即时更新。</p></div>
+      <div class="preset-bar"><span class="preset-label">从一个场景开始</span><div id="presets" class="presets" aria-label="偏好场景"></div></div>
+
+      <div class="lab-layout">
+        <form id="settings" class="settings-panel" aria-label="推荐条件">
+          <div class="panel-heading"><h3>你的偏好</h3><button class="quiet-button" type="button" id="reset">重置</button></div>
+          <fieldset class="form-group"><legend><span>01</span>设置推荐情境</legend>
+            <div class="field spice-field"><div class="label-line"><label for="spice">口味 · 辣度偏好</label><output id="spice-value" for="spice">微辣</output></div><input id="spice" name="spice" type="range" min="0" max="3" step="1" value="1"><div class="range-endpoints"><span>不辣</span><span>偏辣</span></div></div>
+            <div class="field"><label for="nutrition">营养偏好</label><select id="nutrition" name="nutrition"><option value="balanced">均衡搭配</option><option value="protein">蛋白优先</option><option value="plant">蔬菜优先</option></select></div>
+            <div class="field"><label for="health">健康相关偏好</label><select id="health" name="health"><option value="light">清淡烹饪</option><option value="less_oil">少油偏好</option><option value="less_salt">少盐偏好</option></select></div>
+            <div class="field-pair"><div class="field"><label for="region">地域风味</label><select id="region" name="region"><option value="any">不指定</option><option value="jiangzhe">江浙</option><option value="chuangxiang">川湘</option><option value="yue">粤式</option><option value="north">北方</option></select></div><div class="field"><label for="season">时令情境</label><select id="season" name="season"><option value="any">不指定</option><option value="spring">春季</option><option value="summer">夏季</option><option value="autumn">秋季</option><option value="winter">冬季</option></select></div></div>
+          </fieldset>
+          <fieldset class="form-group"><legend><span>02</span>调整维度重要性</legend><p class="field-help">0 表示不计入排序；越高表示越重视。</p><div id="weight-controls"></div><div id="weight-total" class="weight-total"></div></fieldset>
+          <fieldset class="form-group constraint-group"><legend><span>03</span>必须排除的食材</legend><p class="field-help">勾选后先排除，再排序；不会被权重覆盖。</p><div id="exclusions" class="exclusions"></div><p class="small-note">筛选仅使用合成食材标签，不能用于实际过敏安全判断。</p></fieldset>
+        </form>
+
+        <div class="results-column">
+          <section class="recommendation-panel" aria-labelledby="recommendation-title"><div class="results-heading"><div><span class="eyebrow">YOUR RECOMMENDATIONS</span><h3 id="recommendation-title">为这次偏好，重新排序。</h3></div><span id="candidate-count" class="count-pill"></span></div><p id="live-summary" class="live-summary" aria-live="polite"></p><div id="top-results" class="recipe-grid"></div><p class="score-note">示例排序分 · 0–100 分 · 同一规则下比较，不是百分比或概率</p></section>
+
+          <section class="detail-panel" aria-labelledby="detail-title"><div class="detail-heading"><div><p class="eyebrow">WHY THIS RECIPE</p><h3 id="detail-title">为什么推荐它？</h3></div><span class="text-muted">点选上方菜谱可切换</span></div><div id="explanation"></div></section>
+
+          <section class="comparison-panel" aria-labelledby="comparison-title"><div class="comparison-heading"><div><p class="eyebrow">CONTROLLED COMPARISON</p><h3 id="comparison-title">同一组输入，两种排序。</h3></div><label class="compare-label" for="compare-mode">对照规则<select id="compare-mode"><option value="taste">只按口味排序</option><option value="without-taste">不计口味维度</option><option value="without-nutrition">不计营养维度</option><option value="without-health">不计健康偏好</option><option value="without-region">不计地域维度</option><option value="without-season">不计时令维度</option></select></label></div><div id="comparison"></div><p class="small-note">两侧使用相同输入、候选库与硬约束。这里展示示例规则变化，尚不是论文基线实验或模型消融。</p></section>
+
+          <details class="rejected-panel"><summary id="rejected-summary">查看被排除的菜谱</summary><div id="rejected-list"></div></details>
+          <div class="export-bar"><p>把一次体验变成可复查的记录。</p><button class="button secondary" id="export" type="button">导出输入与结果 <span aria-hidden="true">↓</span></button></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="method-section section-anchor"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">02 / UNDERSTAND</p><h2>让推荐的每一步，都可以解释。</h2></div><span class="soft-label">当前逻辑：示例规则</span></div><div class="method-grid"><article><span class="step-number">01</span><h3>偏好进入模型</h3><p>用情境选项和重要性滑杆，表达“喜欢什么”与“更重视什么”。真实网站应使用论文实际支持的输入。</p></article><article><span class="step-number">02</span><h3>先检查硬约束</h3><p>按勾选的示例食材标签排除候选。没有符合条件的结果时，明确显示空集，不自动放宽限制。</p></article><article><span class="step-number">03</span><h3>观察排序与贡献</h3><p>归一化权重后，对五个示例属性分加权。结果区展示每一项的实际贡献，支持同条件下的规则对照。</p></article></div><details class="formula-details"><summary>展开：当前示例怎么算分？</summary><div class="formula-content"><p class="formula">S(r) = Σ<sub>j</sub> w̃<sub>j</sub> · s<sub>j</sub>(r)</p><p>每个维度示例分 s 为 0–100；w̃ 为所选重要性除以重要性总和。所有权重为 0 时不返回排序。营养、烹饪偏好、地域和时令属性均为人工构造的演示数据。</p><p>“不指定”地域或时令使用相同的中性示例分，不区分候选；因此会占用部分权重并影响分数尺度。接入论文时，应替换为论文对缺失偏好的实际处理方式。</p><p><strong>加权分解仅适用于当前示例。</strong> 如果论文采用图模型、深度模型或其他方法，应显示对应的真实模型解释，不能把这条公式当作论文方法。</p></div></details></div></section>
+
+    <section id="research" class="wrap research-section section-anchor"><div class="section-heading"><div><p class="eyebrow">03 / EVIDENCE</p><h2>交互帮助理解，实验提供依据。</h2></div><p class="section-subtitle">把网页上的变化，连接到论文中的证据。</p></div><div class="research-layout"><div class="research-intro"><span class="outline-label">论文待接入</span><h3>从概念原型，<br>走向论文配套网站。</h3><p>这部分会依据论文原文补充研究问题、核心方法、实验设置和结论。当前未填写论文标题、作者、图表、DOI 或性能指标。</p><p class="research-footnote">正式版本可加入 Paper、Code、Data、BibTeX 入口及真实模型版本。</p></div><div class="evidence-rows"><article><span class="evidence-index">A</span><div><h4>研究问题与核心方法</h4><p>论文摘要、贡献点、方法图及与网页输入输出的对应关系。</p></div><span class="pending">待正文</span></article><article><span class="evidence-index">B</span><div><h4>真实对照与评价结果</h4><p>数据集划分、基线、评价口径及原始实验结果；不使用合成指标。</p></div><span class="pending">待实验</span></article><article><span class="evidence-index">C</span><div><h4>典型案例与适用边界</h4><p>成功与失败案例、冲突约束、候选范围及结果适用条件。</p></div><span class="pending">待核验</span></article><article><span class="evidence-index">D</span><div><h4>代码与复现信息</h4><p>真实推理接口、模型和数据版本、随机种子、固定测试输入。</p></div><span class="pending">待代码</span></article></div></div></section>
+
+    <section class="wrap handoff-section"><div><p class="eyebrow">NEXT / CONNECT THE PAPER</p><h2>下一步，让你的研究真正运行起来。</h2><p>提供论文 PDF 或正文，以及现有算法代码和一小份可公开样例数据，即可按真实方法接入交互。</p></div><a class="button primary" href="#experiment">再试一个场景 <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="wrap site-footer"><p>Recipe Lab <span>·</span> 论文交互概念原型</p><p>本页输入在浏览器内计算，无账户、无远程推理、无分析追踪。</p></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><div class="noscript">需要启用 JavaScript 才能体验交互推荐。论文接入说明仍可阅读。</div></noscript>
+  <script src="./demo-engine.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
