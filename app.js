@@ -125,6 +125,7 @@
     byId('weight-total').textContent = total ? `当前重要性合计 ${total}，计算时自动归一化。` : '总和为 0，请至少启用一个维度。';
     engine.presets.forEach(p => document.querySelector(`[data-preset="${p.id}"]`).setAttribute('aria-pressed', String(presetMatches(p.profile))));
     renderHero(); renderCards(); renderExplanation(); renderComparison(); renderRejected();
+    document.dispatchEvent(new CustomEvent('recipe-profile-change', { detail: clone(profile) }));
   }
 
   function toast(message) {
@@ -136,13 +137,14 @@
 
   function exportCase() {
     const record = {
-      schemaVersion: '0.1.0', createdAt: new Date().toISOString(),
+      schemaVersion: '0.2.0', createdAt: new Date().toISOString(),
       inferenceMode: 'synthetic_demo', paperConnected: false,
       metadata: engine.metadata,
       profile: clone(profile),
       current: result,
       comparison: { mode: byId('compare-mode').value, result: comparisonResult },
       selectedRecipeId: selectedId,
+      market: globalThis.RecipeAtlas ? globalThis.RecipeAtlas.getRecord() : null,
       replay: 'RecipeDemo.evaluate(record.profile)。对照为 taste 时使用仅 taste=1 的权重；否则使用 disabledDimensions。',
       note: '本记录仅包含合成数据和示例规则；不是用户论文结果或算法有效性的证据。'
     };
@@ -182,5 +184,6 @@
     toast('已恢复默认情境，并清除食材排除项');
   });
   byId('export').addEventListener('click', exportCase);
+  globalThis.RecipeLab = Object.freeze({ getProfile: () => clone(profile) });
   syncControls(); render();
 })();
