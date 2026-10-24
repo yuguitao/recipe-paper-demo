@@ -5,11 +5,14 @@ import { fileURLToPath } from 'node:url';
 const projectDirectory = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const distDirectory = resolve(projectDirectory, 'dist');
 const deliverablesDirectory = resolve(projectDirectory, '..', 'deliverables');
-const sourceFiles = ['index.html', 'styles.css', 'demo-engine.js', 'app.js', '.nojekyll'];
-
-const [html, css, engine, app] = await Promise.all(
-  sourceFiles.slice(0, 4).map((filename) => readFile(resolve(projectDirectory, filename), 'utf8')),
-);
+const styleFiles = ['styles.css', 'market.css'];
+const scriptFiles = ['demo-engine.js', 'map-data.js', 'market-engine.js', 'app.js', 'market-ui.js'];
+const sourceFiles = ['index.html', ...styleFiles, ...scriptFiles, '.nojekyll', 'MAP-SOURCE.md'];
+const sources = Object.fromEntries(await Promise.all(
+  ['index.html', ...styleFiles, ...scriptFiles].map(async (filename) => [
+    filename, await readFile(resolve(projectDirectory, filename), 'utf8'),
+  ]),
+));
 
 function replaceExactOnce(document, tag, content) {
   const first = document.indexOf(tag);
@@ -23,21 +26,21 @@ function replaceExactOnce(document, tag, content) {
 const inlineScript = (source) => source.replace(/<\/script/gi, '<\\/script');
 const inlineStyle = (source) => source.replace(/<\/style/gi, '<\\/style');
 
-let standaloneHtml = replaceExactOnce(
-  html,
-  '<link rel="stylesheet" href="./styles.css">',
-  `<style>\n${inlineStyle(css)}\n</style>`,
-);
-standaloneHtml = replaceExactOnce(
-  standaloneHtml,
-  '<script src="./demo-engine.js"></script>',
-  `<script>\n${inlineScript(engine)}\n</script>`,
-);
-standaloneHtml = replaceExactOnce(
-  standaloneHtml,
-  '<script src="./app.js"></script>',
-  `<script>\n${inlineScript(app)}\n</script>`,
-);
+let standaloneHtml = sources['index.html'];
+for (const filename of styleFiles) {
+  standaloneHtml = replaceExactOnce(
+    standaloneHtml,
+    `<link rel="stylesheet" href="./${filename}">`,
+    `<style>\n${inlineStyle(sources[filename])}\n</style>`,
+  );
+}
+for (const filename of scriptFiles) {
+  standaloneHtml = replaceExactOnce(
+    standaloneHtml,
+    `<script src="./${filename}"></script>`,
+    `<script>\n${inlineScript(sources[filename])}\n</script>`,
+  );
+}
 
 await mkdir(distDirectory, { recursive: true });
 await mkdir(deliverablesDirectory, { recursive: true });
