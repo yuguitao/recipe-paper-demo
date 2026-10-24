@@ -27,8 +27,8 @@ jobs:
       - name: Build static site and standalone preview
         run: node scripts/build.mjs
 
-      - name: Test demonstration engine
-        run: node --test tests/engine.test.mjs
+      - name: Test recommendation and regional market engines
+        run: node --test tests/*.test.mjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
