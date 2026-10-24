@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # Asia/Shanghai 08:25 and 17:25. GitHub schedules are best effort.
+    - cron: '25 0,9 * * *'
 
 permissions:
   contents: read
@@ -17,18 +20,42 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # Writes are used only to persist the three public-data snapshot files.
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout source
         uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Check public price and popularity sources
+        run: python3 scripts/update_data.py
+
+      - name: Test source integrity and recommendation engines
+        run: node --test tests/*.test.mjs
 
       - name: Build static site and standalone preview
         run: node scripts/build.mjs
 
-      - name: Test recommendation and regional market engines
-        run: node --test tests/*.test.mjs
+      - name: Preserve public observations for daily and weekly views
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git add data/latest.json data/latest.js data/history.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Refresh public food source snapshots'
+          git push origin HEAD:main
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
