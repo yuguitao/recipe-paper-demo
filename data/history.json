@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-19T02:16:40+08:00",
+  "generatedAt": "2026-11-19T15:43:34+08:00",
   "retentionDays": 30,
   "observations": [
     {
@@ -1119622,7 +1119622,7 @@
     {
       "sourceId": "meishichina_current",
       "capturedDate": "2026-11-19",
-      "fetchedAt": "2026-11-19T02:16:40+08:00",
+      "fetchedAt": "2026-11-19T15:43:34+08:00",
       "periodDateKnown": false,
       "window": {
         "type": "platform_current",
@@ -1119649,7 +1119649,7 @@
           "observedDate": null,
           "capturedDate": "2026-11-19",
           "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
           "ingredients": [
             "排骨",
             "山楂",
@@ -1119665,7 +1119665,7 @@
             "料酒"
           ],
           "isSynthetic": false,
-          "collectionCount": 107,
+          "collectionCount": 94,
           "collectionCountMeaning": "来源页面展示的收藏人数；累计范围未披露，不解读为本周新增收藏"
         },
         {
@@ -1119686,7 +1119686,7 @@
           "observedDate": null,
           "capturedDate": "2026-11-19",
           "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
           "ingredients": [
             "饼皮预拌粉",
             "开水",
@@ -1119700,11 +1119700,11 @@
           "collectionCountMeaning": "来源页面展示的收藏人数；累计范围未披露，不解读为本周新增收藏"
         },
         {
-          "id": "meishichina_current:667691",
+          "id": "meishichina_current:667652",
           "sourceId": "meishichina_current",
-          "recipeId": "667691",
-          "title": "巧克力慕斯蛋糕",
-          "sourceUrl": "https://home.meishichina.com/recipe-667691.html",
+          "recipeId": "667652",
+          "title": "奥利奥抹茶牛乳杯",
+          "sourceUrl": "https://home.meishichina.com/recipe-667652.html",
           "listingUrl": "https://home.meishichina.com/show-top-type-recipe.html",
           "rank": 3,
           "rankMeaning": "此榜单首页的展示顺位；平台排序公式未披露，不等于作品数或收藏数排序",
@@ -1119717,28 +1119717,25 @@
           "observedDate": null,
           "capturedDate": "2026-11-19",
           "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
           "ingredients": [
-            "奥利奥饼干碎",
-            "黄油(融化好的)",
-            "奶油奶酪",
-            "糖",
+            "纯牛奶",
             "淡奶油",
-            "柠檬汁",
-            "牛奶",
-            "全脂巧克力",
-            "吉利丁片"
+            "炼乳",
+            "抹茶粉",
+            "奥利奥饼干碎",
+            "凉白开"
           ],
           "isSynthetic": false,
           "collectionCount": 74,
           "collectionCountMeaning": "来源页面展示的收藏人数；累计范围未披露，不解读为本周新增收藏"
         },
         {
-          "id": "meishichina_current:667688",
+          "id": "meishichina_current:667662",
           "sourceId": "meishichina_current",
-          "recipeId": "667688",
-          "title": "抹茶牛乳馅",
-          "sourceUrl": "https://home.meishichina.com/recipe-667688.html",
+          "recipeId": "667662",
+          "title": "南瓜贝果",
+          "sourceUrl": "https://home.meishichina.com/recipe-667662.html",
           "listingUrl": "https://home.meishichina.com/show-top-type-recipe.html",
           "rank": 4,
           "rankMeaning": "此榜单首页的展示顺位；平台排序公式未披露，不等于作品数或收藏数排序",
@@ -1119751,7 +1119748,39 @@
           "observedDate": null,
           "capturedDate": "2026-11-19",
           "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
+          "ingredients": [
+            "高筋面粉",
+            "熟南瓜泥",
+            "牛奶",
+            "酵母",
+            "盐",
+            "糖",
+            "水"
+          ],
+          "isSynthetic": false,
+          "collectionCount": 63,
+          "collectionCountMeaning": "来源页面展示的收藏人数；累计范围未披露，不解读为本周新增收藏"
+        },
+        {
+          "id": "meishichina_current:667688",
+          "sourceId": "meishichina_current",
+          "recipeId": "667688",
+          "title": "抹茶牛乳馅",
+          "sourceUrl": "https://home.meishichina.com/recipe-667688.html",
+          "listingUrl": "https://home.meishichina.com/show-top-type-recipe.html",
+          "rank": 5,
+          "rankMeaning": "此榜单首页的展示顺位；平台排序公式未披露，不等于作品数或收藏数排序",
+          "window": {
+            "type": "platform_current",
+            "label": "平台标注：当季最热；未公布具体周期及起讫日期",
+            "start": null,
+            "end": null
+          },
+          "observedDate": null,
+          "capturedDate": "2026-11-19",
+          "periodDateKnown": false,
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
           "ingredients": [
             "抹茶粉",
             "乳化黄油",
@@ -1119773,7 +1119802,7 @@
           "title": "巧克力月饼",
           "sourceUrl": "https://home.meishichina.com/recipe-667679.html",
           "listingUrl": "https://home.meishichina.com/show-top-type-recipe.html",
-          "rank": 5,
+          "rank": 6,
           "rankMeaning": "此榜单首页的展示顺位；平台排序公式未披露，不等于作品数或收藏数排序",
           "window": {
             "type": "platform_current",
@@ -1119784,7 +1119813,7 @@
           "observedDate": null,
           "capturedDate": "2026-11-19",
           "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
           "ingredients": [
             "中筋面粉",
             "转化糖浆",
@@ -1119801,13 +1119830,13 @@
           "collectionCountMeaning": "来源页面展示的收藏人数；累计范围未披露，不解读为本周新增收藏"
         },
         {
-          "id": "meishichina_current:668084",
+          "id": "meishichina_current:667691",
           "sourceId": "meishichina_current",
-          "recipeId": "668084",
-          "title": "椰蓉奶酥小饼干",
-          "sourceUrl": "https://home.meishichina.com/recipe-668084.html",
+          "recipeId": "667691",
+          "title": "巧克力慕斯蛋糕",
+          "sourceUrl": "https://home.meishichina.com/recipe-667691.html",
           "listingUrl": "https://home.meishichina.com/show-top-type-recipe.html",
-          "rank": 6,
+          "rank": 7,
           "rankMeaning": "此榜单首页的展示顺位；平台排序公式未披露，不等于作品数或收藏数排序",
           "window": {
             "type": "platform_current",
@@ -1119818,7 +1119847,41 @@
           "observedDate": null,
           "capturedDate": "2026-11-19",
           "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
+          "ingredients": [
+            "奥利奥饼干碎",
+            "黄油(融化好的)",
+            "奶油奶酪",
+            "糖",
+            "淡奶油",
+            "柠檬汁",
+            "牛奶",
+            "全脂巧克力",
+            "吉利丁片"
+          ],
+          "isSynthetic": false,
+          "collectionCount": 55,
+          "collectionCountMeaning": "来源页面展示的收藏人数；累计范围未披露，不解读为本周新增收藏"
+        },
+        {
+          "id": "meishichina_current:668084",
+          "sourceId": "meishichina_current",
+          "recipeId": "668084",
+          "title": "椰蓉奶酥小饼干",
+          "sourceUrl": "https://home.meishichina.com/recipe-668084.html",
+          "listingUrl": "https://home.meishichina.com/show-top-type-recipe.html",
+          "rank": 8,
+          "rankMeaning": "此榜单首页的展示顺位；平台排序公式未披露，不等于作品数或收藏数排序",
+          "window": {
+            "type": "platform_current",
+            "label": "平台标注：当季最热；未公布具体周期及起讫日期",
+            "start": null,
+            "end": null
+          },
+          "observedDate": null,
+          "capturedDate": "2026-11-19",
+          "periodDateKnown": false,
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
           "ingredients": [
             "低筋面粉",
             "杏仁粉",
@@ -1119840,7 +1119903,7 @@
           "title": "新广式软皮月饼",
           "sourceUrl": "https://home.meishichina.com/recipe-667685.html",
           "listingUrl": "https://home.meishichina.com/show-top-type-recipe.html",
-          "rank": 7,
+          "rank": 9,
           "rankMeaning": "此榜单首页的展示顺位；平台排序公式未披露，不等于作品数或收藏数排序",
           "window": {
             "type": "platform_current",
@@ -1119851,7 +1119914,7 @@
           "observedDate": null,
           "capturedDate": "2026-11-19",
           "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
           "ingredients": [
             "鸡蛋液",
             "糖",
@@ -1119875,7 +1119938,7 @@
           "title": "六红药膳月饼",
           "sourceUrl": "https://home.meishichina.com/recipe-667716.html",
           "listingUrl": "https://home.meishichina.com/show-top-type-recipe.html",
-          "rank": 8,
+          "rank": 10,
           "rankMeaning": "此榜单首页的展示顺位；平台排序公式未披露，不等于作品数或收藏数排序",
           "window": {
             "type": "platform_current",
@@ -1119886,7 +1119949,7 @@
           "observedDate": null,
           "capturedDate": "2026-11-19",
           "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
           "ingredients": [
             "红豆",
             "红枣",
@@ -1119902,72 +1119965,6 @@
           ],
           "isSynthetic": false,
           "collectionCount": 47,
-          "collectionCountMeaning": "来源页面展示的收藏人数；累计范围未披露，不解读为本周新增收藏"
-        },
-        {
-          "id": "meishichina_current:667749",
-          "sourceId": "meishichina_current",
-          "recipeId": "667749",
-          "title": "口蘑酿肉",
-          "sourceUrl": "https://home.meishichina.com/recipe-667749.html",
-          "listingUrl": "https://home.meishichina.com/show-top-type-recipe.html",
-          "rank": 9,
-          "rankMeaning": "此榜单首页的展示顺位；平台排序公式未披露，不等于作品数或收藏数排序",
-          "window": {
-            "type": "platform_current",
-            "label": "平台标注：当季最热；未公布具体周期及起讫日期",
-            "start": null,
-            "end": null
-          },
-          "observedDate": null,
-          "capturedDate": "2026-11-19",
-          "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
-          "ingredients": [
-            "口蘑",
-            "猪肉",
-            "黑胡椒",
-            "盐",
-            "食用油",
-            "鸡蛋",
-            "酱油"
-          ],
-          "isSynthetic": false,
-          "collectionCount": 43,
-          "collectionCountMeaning": "来源页面展示的收藏人数；累计范围未披露，不解读为本周新增收藏"
-        },
-        {
-          "id": "meishichina_current:668027",
-          "sourceId": "meishichina_current",
-          "recipeId": "668027",
-          "title": "巨蛋吐司",
-          "sourceUrl": "https://home.meishichina.com/recipe-668027.html",
-          "listingUrl": "https://home.meishichina.com/show-top-type-recipe.html",
-          "rank": 10,
-          "rankMeaning": "此榜单首页的展示顺位；平台排序公式未披露，不等于作品数或收藏数排序",
-          "window": {
-            "type": "platform_current",
-            "label": "平台标注：当季最热；未公布具体周期及起讫日期",
-            "start": null,
-            "end": null
-          },
-          "observedDate": null,
-          "capturedDate": "2026-11-19",
-          "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
-          "ingredients": [
-            "高筋面粉",
-            "糖",
-            "耐高糖干酵母",
-            "奶粉",
-            "鸡蛋液",
-            "牛奶",
-            "老面",
-            "盐",
-            "黄油"
-          ],
-          "isSynthetic": false,
-          "collectionCount": 37,
           "collectionCountMeaning": "来源页面展示的收藏人数；累计范围未披露，不解读为本周新增收藏"
         }
       ]
@@ -1131961,39 +1131958,8 @@
     {
       "sourceId": "meishichina_current",
       "capturedDate": "2026-11-19",
-      "fetchedAt": "2026-11-19T02:16:40+08:00",
+      "fetchedAt": "2026-11-19T15:43:34+08:00",
       "signals": [
-        {
-          "id": "meishichina_current:ingredient:egg",
-          "sourceId": "meishichina_current",
-          "sourceUrl": "https://home.meishichina.com/show-top-type-recipe.html",
-          "ingredientId": "egg",
-          "name": "鸡蛋",
-          "metric": "ranked_recipe_ingredient_mentions",
-          "value": 3,
-          "unit": "recipes",
-          "sampleSize": 10,
-          "sharePct": 30.0,
-          "sourceRecipeIds": [
-            "meishichina_current:667688",
-            "meishichina_current:667716",
-            "meishichina_current:667749"
-          ],
-          "window": {
-            "type": "platform_current",
-            "label": "平台标注：当季最热；未公布具体周期及起讫日期",
-            "start": null,
-            "end": null
-          },
-          "observedDate": null,
-          "capturedDate": "2026-11-19",
-          "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
-          "method": "从来源榜单首页公开食材字段按显式同义词表匹配，每道菜对同一食材最多计一次；分母为该来源本次首页菜谱数。两平台分别计算，未按作品数或收藏数加权。",
-          "coverage": "仅为所采榜单首页样本的食材出现频率；不代表全国、地区、全网、搜索量或销量热度",
-          "isDerived": true,
-          "isSynthetic": false
-        },
         {
           "id": "meishichina_current:ingredient:milk",
           "sourceId": "meishichina_current",
@@ -1132001,14 +1131967,15 @@
           "ingredientId": "milk",
           "name": "牛奶",
           "metric": "ranked_recipe_ingredient_mentions",
-          "value": 3,
+          "value": 4,
           "unit": "recipes",
           "sampleSize": 10,
-          "sharePct": 30.0,
+          "sharePct": 40.0,
           "sourceRecipeIds": [
-            "meishichina_current:667691",
+            "meishichina_current:667652",
+            "meishichina_current:667662",
             "meishichina_current:667688",
-            "meishichina_current:668027"
+            "meishichina_current:667691"
           ],
           "window": {
             "type": "platform_current",
@@ -1132019,7 +1131986,37 @@
           "observedDate": null,
           "capturedDate": "2026-11-19",
           "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
+          "method": "从来源榜单首页公开食材字段按显式同义词表匹配，每道菜对同一食材最多计一次；分母为该来源本次首页菜谱数。两平台分别计算，未按作品数或收藏数加权。",
+          "coverage": "仅为所采榜单首页样本的食材出现频率；不代表全国、地区、全网、搜索量或销量热度",
+          "isDerived": true,
+          "isSynthetic": false
+        },
+        {
+          "id": "meishichina_current:ingredient:egg",
+          "sourceId": "meishichina_current",
+          "sourceUrl": "https://home.meishichina.com/show-top-type-recipe.html",
+          "ingredientId": "egg",
+          "name": "鸡蛋",
+          "metric": "ranked_recipe_ingredient_mentions",
+          "value": 2,
+          "unit": "recipes",
+          "sampleSize": 10,
+          "sharePct": 20.0,
+          "sourceRecipeIds": [
+            "meishichina_current:667688",
+            "meishichina_current:667716"
+          ],
+          "window": {
+            "type": "platform_current",
+            "label": "平台标注：当季最热；未公布具体周期及起讫日期",
+            "start": null,
+            "end": null
+          },
+          "observedDate": null,
+          "capturedDate": "2026-11-19",
+          "periodDateKnown": false,
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
           "method": "从来源榜单首页公开食材字段按显式同义词表匹配，每道菜对同一食材最多计一次；分母为该来源本次首页菜谱数。两平台分别计算，未按作品数或收藏数加权。",
           "coverage": "仅为所采榜单首页样本的食材出现频率；不代表全国、地区、全网、搜索量或销量热度",
           "isDerived": true,
@@ -1132048,7 +1132045,7 @@
           "observedDate": null,
           "capturedDate": "2026-11-19",
           "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
           "method": "从来源榜单首页公开食材字段按显式同义词表匹配，每道菜对同一食材最多计一次；分母为该来源本次首页菜谱数。两平台分别计算，未按作品数或收藏数加权。",
           "coverage": "仅为所采榜单首页样本的食材出现频率；不代表全国、地区、全网、搜索量或销量热度",
           "isDerived": true,
@@ -1132077,7 +1132074,7 @@
           "observedDate": null,
           "capturedDate": "2026-11-19",
           "periodDateKnown": false,
-          "fetchedAt": "2026-11-19T02:16:40+08:00",
+          "fetchedAt": "2026-11-19T15:43:34+08:00",
           "method": "从来源榜单首页公开食材字段按显式同义词表匹配，每道菜对同一食材最多计一次；分母为该来源本次首页菜谱数。两平台分别计算，未按作品数或收藏数加权。",
           "coverage": "仅为所采榜单首页样本的食材出现频率；不代表全国、地区、全网、搜索量或销量热度",
           "isDerived": true,
@@ -1132995,6 +1132992,22 @@
         "meishichina_current": "ok",
         "moa-wholesale-daily": "authorization_required",
         "mofcom-daily-market": "ok",
+        "wikimedia_pageviews_reference": "reference_only",
+        "xiachufang_weekly": "stale"
+      }
+    },
+    {
+      "at": "2026-11-19T15:43:34+08:00",
+      "status": "partial",
+      "contentVersion": "698f542d4ec3a159",
+      "sourceStatuses": {
+        "baidu_index_reference": "reference_only",
+        "douguo_reference": "unavailable",
+        "douyin_index_reference": "reference_only",
+        "google_trends_reference": "authorization_required",
+        "meishichina_current": "ok",
+        "moa-wholesale-daily": "authorization_required",
+        "mofcom-daily-market": "stale",
         "wikimedia_pageviews_reference": "reference_only",
         "xiachufang_weekly": "stale"
       }
